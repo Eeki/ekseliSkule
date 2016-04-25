@@ -1,0 +1,1 @@
+EkseliSkulePlatan Devaus-setti!

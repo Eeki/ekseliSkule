@@ -1,0 +1,1 @@
+export const VIDEO_SELECTED = 'video_selected';
