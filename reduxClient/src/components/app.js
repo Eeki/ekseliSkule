@@ -1,17 +1,15 @@
 import React from 'react';
 import { Component } from 'react';
 
-import VideoList from '../containers/video-list';
-import VideoDetail from '../containers/video-player';
+import Header from '../containers/header';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <VideoList />
-        <VideoDetail />
+        <Header />
+        {this.props.children}
       </div>
-
     );
   }
 }

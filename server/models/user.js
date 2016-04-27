@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt-nodejs'); // We will crypt the user password with
 //Define our user model
 const userSchema = new Schema({
   email : { type: String, unique: true, lowercase: true }, //email is unique. Before the mongoose will save the userSchema to DB, it checks if the email is unique.
-  password: String
+  password: String,
+  admin: Boolean
 });
 
 //On Save Hook, encrypt password
@@ -24,7 +25,7 @@ userSchema.pre('save', function(next) {
       if(err) {
         return next(err);
       }
-      // overwrite palin text password with encrypted password
+      // overwrite plain text password with encrypted password
       user.password = hash;
       next();
     });

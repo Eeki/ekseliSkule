@@ -1,11 +1,23 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import {selectVideo} from '../actions/index'
+import { selectVideo } from '../actions/index'
 import {bindActionCreators} from 'redux';
+import { fetchVideos } from '../actions';
 
 class VideoList extends Component {
+  componentWillMount() {
+    this.props.fetchVideos()
+  }
+
+
   renderList() {
-    return this.props.videos.map( (video) => {
+    if(!this.props.videos.videoList) {
+      return (
+        <div>Loading...</div>
+      )
+    }
+
+    return this.props.videos.videoList.map( (video) => {
       return (
         <li
           key={video.title}
@@ -34,7 +46,10 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectVideo: selectVideo}, dispatch);
+  return bindActionCreators({
+    selectVideo: selectVideo,
+    fetchVideos: fetchVideos
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoList);

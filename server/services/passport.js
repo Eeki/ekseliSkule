@@ -8,7 +8,7 @@ const LocalStrategy = require('passport-local');
 //setup local strategy
 const localOptions = {usernameField: 'email'};
 const localLogin = new LocalStrategy(localOptions, function(email, password, done){
-  // Verify this email ans password, call done with the user if it is the corrent email and password, otherwise call done with false
+  // Verify this email and password, call done with the user if it is the corrent email and password, otherwise call done with false
   User.findOne({ email: email }, function(err, user) {
     if(err) {
       return done(err);

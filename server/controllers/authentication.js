@@ -10,14 +10,13 @@ function tokenForUser(user) {
 exports.signin = function(req, res, next) {
   // User has already their email and password auth's. We just need to give them a token
   // we can get the user from req.user because user is passed to password 'next' callback that puts user to req.
-  console.log(req.user);
-  res.send( {token: tokenForUser(req.user)} )
+  //console.log(req.user);
+  res.send( {token: tokenForUser(req.user), admin:req.user.admin} )
 };
 
 exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
-  console.log("signup");
   if(!email || !password) { // add here a check that email is valid and password is long enough
     return res.status(422).send({ error: 'You must provide email and password'});
   }
@@ -35,7 +34,8 @@ exports.signup = function(req, res, next) {
     //If a user with email does NOT exist, create and save user record
     const user = new User({
       email: email,
-      password: password
+      password: password,
+      admin: false
     });
 
     user.save(function(err) {
@@ -44,7 +44,7 @@ exports.signup = function(req, res, next) {
       }
 
       //Respond to request indicating the user was created
-      res.json({ token: tokenForUser(user) }); // Response to the Reduxclient will be a generated accessToken
+      res.json({ token: tokenForUser(user), admin: user.admin }); // Response to the Reduxclient will be a generated accessToken
 
     });
   });

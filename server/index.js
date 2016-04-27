@@ -8,7 +8,7 @@ const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
 // DB Setup
-mongoose.connect('mongodb://localhost:auth/auth');
+mongoose.connect('mongodb://localhost:ekseliskole/ekseliskole');
 
 //App Setup --> morgan and bodyParser are middleware in express. Middleware in express is something that incoming request is passed to. So any incoming request is passed to morgan and bodyParser. app.use will register them as a middleware.
 app.use(morgan('combined')); //Morgan is a logging framework and we use it basically for debugging.
