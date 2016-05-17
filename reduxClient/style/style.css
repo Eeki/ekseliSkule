@@ -2,3 +2,16 @@
     cursor: pointer;
     cursor: hand;
 }
+
+.captivate-iframe {
+    display:flex;
+    flex-direction:column;
+    height: 627px;
+    width: 1024px;
+}
+
+.iframe-flex {
+    flex:1;
+    height: 627px;
+    width: 1024px;
+}

@@ -8,7 +8,10 @@ class WelcomeView extends Component {
   renderLinkButtons() {
     if(this.props.authenticated) {
       return(
-        <Link className="btn btn-success" to="/videoview">Siirry videoihin</Link>
+        <div>
+          <Link className="btn btn-success" to="/videoview">Siirry videoihin</Link>
+          <Link className="btn btn-warning" to="/captivateview">Siirry interaktiivisiin videoihin</Link>
+        </div>
       )
     } else {
       return(

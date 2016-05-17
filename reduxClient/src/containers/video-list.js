@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import { fetchVideos } from '../actions';
 
 class VideoList extends Component {
+  
   componentWillMount() {
     this.props.fetchVideos()
   }

@@ -8,7 +8,8 @@ import {
   FETCH_VIDEOS, 
   VIDEO_SELECTED,
   ADMIN_TRUE,
-  ADMIN_FALSE
+  ADMIN_FALSE,
+  CAPTIVATE_LESSON_SELECTED
 } from './constants';
 
 const ROOT_URL = 'http://localhost:3090';
@@ -136,6 +137,15 @@ export function selectVideo(video) {
     type : VIDEO_SELECTED,
     payload: video
   };
+}
+
+export function selectCaptivateLesson(captivateLesson) {
+  console.log(`A lesson ${captivateLesson.title} is selected with a filepath ${captivateLesson.filepath}`)
+
+  return {
+    type: CAPTIVATE_LESSON_SELECTED,
+    payload: captivateLesson
+  }
 }
 
 function setAdminToLocalStorage(bool) {

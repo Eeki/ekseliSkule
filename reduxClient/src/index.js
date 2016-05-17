@@ -15,6 +15,7 @@ import RequireAuth from './components/auth/require_auth';
 import WelcomeView from './containers/welcomeView';
 import reducers from './reducers';
 import AdminPanel from './containers/admin-panel';
+import CaptivateView from './components/captivateView';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -42,6 +43,7 @@ ReactDOM.render(
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
         <Route path="videoview" component={RequireAuth(VideoView)} />
+        <Route path="captivateview" component={RequireAuth(CaptivateView)} />
         <Route path="adminpanel" component={RequireAuth(AdminPanel)} />
       </Route>
     </Router>
